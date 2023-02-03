@@ -8,7 +8,6 @@
             <arg value="update"/>
         </exec>
 
-        <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
         <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
     </target>
 
@@ -19,7 +18,6 @@
             <arg value="install"/>
         </exec>
 
-        <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
         <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
     </target>
 
@@ -32,17 +30,10 @@
         </exec>
     </target>
 
-    <target name="code-generation">
-        <exec executable="bin/stratum" checkreturn="true" passthru="true">
-            <arg value="--ansi"/>
-            <arg value="stratum"/>
-            <arg value="etc/stratum-assets.ini"/>
-        </exec>
-    </target>
-
     <!-- Runs all unit tests -->
     <target name="unit">
         <exec executable="bin/phpunit" passthru="true" checkreturn="true"/>
+        <delete file="plaisio-assets.xml" quiet="true"/>
     </target>
 
     <target name="build" depends="update,unit">
