@@ -12,8 +12,8 @@
     "ext-dom": "*",
     "ext-inotify": "*",
     "ext-libxml": "*",
-    "plaisio/console": "dev-master",
-    "plaisio/console-assets": "dev-master",
+    "plaisio/console": "3.0.0",
+    "plaisio/console-assets": "1.0.0",
     "plaisio/kernel": "^3.2.0",
     "setbased/exception": "^2.3.0",
     "setbased/helper-program-execution": "^1.2.0",
@@ -25,7 +25,7 @@
   "prefer-stable": true,
   "require-dev": {
     "phing/phing": "^3.0.0-RC4",
-    "phpunit/phpunit": "^9.5.28"
+    "phpunit/phpunit": "^9.6.2"
   },
   "autoload": {
     "psr-4": {
@@ -37,9 +37,6 @@
       "Plaisio\\Console\\TypeScript\\Test\\": "test/"
     }
   },
-  "bin": [
-    "bin/plaisio"
-  ],
   "config": {
     "bin-dir": "bin/",
     "sort-packages": true,
