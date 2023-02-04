@@ -8,7 +8,6 @@ use Plaisio\Console\Command\PlaisioCommand;
 use Plaisio\Console\Exception\ConfigException;
 use Plaisio\Console\Helper\PlaisioXmlPathHelper;
 use Plaisio\Console\TypeScript\Helper\FixHelper;
-use SetBased\Exception\RuntimeException;
 use SetBased\Helper\Cast;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,7 +35,6 @@ class FixerCommand extends PlaisioCommand
   private string $jsPath;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * @inheritdoc
    */
@@ -80,8 +78,6 @@ class FixerCommand extends PlaisioCommand
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Reads the asset root directory (a.k.a. the resource directory).
-   *
-   * @throws ConfigException
    */
   private function readResourceDir(): void
   {
@@ -90,7 +86,7 @@ class FixerCommand extends PlaisioCommand
     $this->jsPath = $helper->queryAssetDir('js');
     if (!file_exists($this->jsPath))
     {
-      throw new RuntimeException("JavaScript asset directory '%s' does not exists", $this->jsPath);
+      throw new ConfigException("JavaScript asset directory '%s' does not exists", $this->jsPath);
     }
   }
 

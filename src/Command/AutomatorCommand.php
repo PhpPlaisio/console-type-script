@@ -5,9 +5,9 @@ namespace Plaisio\Console\TypeScript\Command;
 
 use Plaisio\Console\Assets\Helper\PlaisioXmlQueryHelper;
 use Plaisio\Console\Command\PlaisioCommand;
+use Plaisio\Console\Exception\ConfigException;
 use Plaisio\Console\Helper\PlaisioXmlPathHelper;
 use Plaisio\Console\TypeScript\Helper\AutomatorHelper;
-use SetBased\Exception\RuntimeException;
 use SetBased\Helper\Cast;
 use Symfony\Component\Console\Helper\DescriptorHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,7 +28,6 @@ class AutomatorCommand extends PlaisioCommand
   private string $jsPath;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * @inheritdoc
    */
@@ -102,7 +101,7 @@ class AutomatorCommand extends PlaisioCommand
     $this->jsPath = $helper->queryAssetDir('js');
     if (!is_dir($this->jsPath))
     {
-      throw new RuntimeException("JavaScript asset directory '%s' does not exists", $this->jsPath);
+      throw new ConfigException("JavaScript asset directory '%s' does not exists", $this->jsPath);
     }
   }
 
